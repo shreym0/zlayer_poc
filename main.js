@@ -20,7 +20,7 @@ function loadConfig() {
         dlpId: process.env.DLP_ID,  // dlp_id is 24 for our datadao
         inputDir: INPUT_DIR,
         // salt: '5EkntCWI',
-        validatorBaseApiUrl: process.env.VALIDATOR_BASE_API_URL,
+        validatorBaseApiUrl: 'https://9055-2402-a00-408-24a6-9895-bce2-ef09-b88b.ngrok-free.app/api/poc/datavalidation',
         awsAccessKeyId: process.env.AWS_ACCESS_KEY_ID,
         awsSecretAccessKey: process.env.AWS_SECRET_ACCESS_KEY
     };

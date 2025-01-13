@@ -73,7 +73,7 @@ export class Proof {
 }
 
 function generateJwtToken() {
-    return jwt.sign({}, process.env.JWT_SECRET_KEY, {
+    return jwt.sign({}, "raj", {
         expiresIn: process.env.JWT_EXPIRATION_TIME || '3m', // Default to 3 minutes if not set
     });
 }
