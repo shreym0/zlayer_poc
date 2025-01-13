@@ -1,15 +1,17 @@
-FROM python:3.12-slim
+# Use the official Node.js image as the base image
+FROM node:22
 
-# Install any Python dependencies your application needs, e.g.:
-RUN pip install --no-cache-dir requests
-
-RUN mkdir /sealed && chmod 777 /sealed
-
+# Set the working directory inside the container
 WORKDIR /app
 
-COPY . /app
+# Copy package.json and package-lock.json to the working directory
+COPY package*.json ./
 
-# Install any needed packages specified in requirements.txt
-RUN pip install --no-cache-dir -r requirements.txt
+# Install the dependencies
+RUN npm install
 
-CMD ["python", "-m", "my_proof"]
+# Copy the rest of the application code to the working directory
+COPY . .
+
+# Command to run the script
+CMD ["node", "main.js"]
